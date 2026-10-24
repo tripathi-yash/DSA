@@ -49,29 +49,23 @@ Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 
 **Language:** Java  
 **Runtime:** 13 ms (beats 14.34%)  
-**Memory:** 45.6 MB (beats 85.96%)  
-**Submitted:** 2026-10-24T07:33:07.158Z  
+**Memory:** 45.3 MB (beats 98.35%)  
+**Submitted:** 2026-10-24T07:34:53.677Z  
 
 ```java
 class Solution {
     public boolean isPalindrome(int x) {
+        if(x<0){
+            return false;
+        }
+        long reversed = 0;
+        int y=x;
 
-        // String orig = Integer.toString(x);
-        
-        // StringBuilder sb = new StringBuilder(orig).reverse();
-
-        // return (sb.toString().equals(orig)); 
-        long ans = 0;
-        int temp = x;
-        
-        while(temp != 0){
-            int rem = temp % 10;
-            ans = ans * 10 + rem;
-            temp /= 10;
-        }        
-
-        if (x < 0) return false;     
-        return ans == x;
+        while(y>0){
+            reversed = reversed*10+y%10;
+            y/=10;
+        }
+        return reversed == x;
     }
 }
 ```
