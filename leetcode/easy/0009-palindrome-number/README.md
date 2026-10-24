@@ -48,19 +48,30 @@ Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 ## Solution
 
 **Language:** Java  
-**Runtime:** 17 ms (beats 5.79%)  
-**Memory:** 45.9 MB (beats 47.79%)  
-**Submitted:** 2026-10-24T07:16:57.797Z  
+**Runtime:** 13 ms (beats 14.34%)  
+**Memory:** 45.6 MB (beats 85.96%)  
+**Submitted:** 2026-10-24T07:33:07.158Z  
 
 ```java
 class Solution {
     public boolean isPalindrome(int x) {
 
-        String orig = Integer.toString(x);
+        // String orig = Integer.toString(x);
         
-        StringBuilder sb = new StringBuilder(orig).reverse();
+        // StringBuilder sb = new StringBuilder(orig).reverse();
 
-        return (sb.toString().equals(orig)); 
+        // return (sb.toString().equals(orig)); 
+        long ans = 0;
+        int temp = x;
+        
+        while(temp != 0){
+            int rem = temp % 10;
+            ans = ans * 10 + rem;
+            temp /= 10;
+        }        
+
+        if (x < 0) return false;     
+        return ans == x;
     }
 }
 ```
