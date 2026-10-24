@@ -47,8 +47,8 @@ Output: 0
 
 **Language:** Java  
 **Runtime:** 1 ms (beats 84.38%)  
-**Memory:** 42.5 MB (beats 87.68%)  
-**Submitted:** 2026-10-24T04:08:30.051Z  
+**Memory:** 42.3 MB (beats 95.07%)  
+**Submitted:** 2026-10-24T04:25:16.994Z  
 
 ```java
 class Solution {
@@ -58,8 +58,11 @@ class Solution {
         HashMap<Integer, Integer> map = new HashMap<>();
 
         for(int num : nums){
-            count += map.getOrDefault(num,0);
             map.put(num,map.getOrDefault(num,0) + 1);
+        }
+
+        for(int freq : map.values()){
+            count += (freq * (freq-1)) / 2;
         }
 
         return count;
