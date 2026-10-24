@@ -50,8 +50,8 @@ Output: "alGalooG"
 
 **Language:** Java  
 **Runtime:** 1 ms (beats 77.55%)  
-**Memory:** 42.2 MB (beats 98.37%)  
-**Submitted:** 2026-10-24T06:29:01.373Z  
+**Memory:** 42.4 MB (beats 89.14%)  
+**Submitted:** 2026-10-24T06:32:13.074Z  
 
 ```java
 class Solution {
@@ -62,9 +62,11 @@ class Solution {
         for(int i=0; i<command.length(); i++){
             
             char ch = command.charAt(i);
-            // char chNext = command.charAt(i+1);
-
-            if(ch == '(' && command.charAt(i+1) == ')'){
+            
+            if(ch == 'G'){
+                sb.append('G');
+            }
+            else if(ch == '(' && command.charAt(i+1) == ')'){
                 sb.append('o');
                 i += 1;
             }  
@@ -72,7 +74,7 @@ class Solution {
                 sb.append("al");
                 i += 3;
             }
-            else sb.append(ch);
+           
 
         }
 
