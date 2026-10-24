@@ -49,9 +49,9 @@ Output: "alGalooG"
 ## Solution
 
 **Language:** Java  
-**Runtime:** 1 ms (beats 77.55%)  
-**Memory:** 42.4 MB (beats 89.14%)  
-**Submitted:** 2026-10-24T06:32:13.074Z  
+**Runtime:** 0 ms  
+**Memory:** 41.7 MB  
+**Submitted:** 2026-10-24T06:32:57.840Z  
 
 ```java
 class Solution {
