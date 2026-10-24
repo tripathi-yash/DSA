@@ -47,21 +47,19 @@ Output: 0
 
 **Language:** Java  
 **Runtime:** 1 ms (beats 84.38%)  
-**Memory:** 42.4 MB (beats 87.68%)  
-**Submitted:** 2026-10-24T03:41:48.849Z  
+**Memory:** 42.5 MB (beats 87.68%)  
+**Submitted:** 2026-10-24T04:08:30.051Z  
 
 ```java
 class Solution {
     public int numIdenticalPairs(int[] nums) {
 
         int count = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
 
-        for(int i=0; i<nums.length; i++){
-
-            for(int j=i+1; j<nums.length; j++){
-
-                if(nums[i] == nums[j] && i < j) count++;
-            }
+        for(int num : nums){
+            count += map.getOrDefault(num,0);
+            map.put(num,map.getOrDefault(num,0) + 1);
         }
 
         return count;
