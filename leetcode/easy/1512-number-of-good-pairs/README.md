@@ -46,22 +46,22 @@ Output: 0
 ## Solution
 
 **Language:** Java  
-**Runtime:** 1 ms (beats 84.38%)  
-**Memory:** 42.3 MB (beats 95.07%)  
-**Submitted:** 2026-10-24T04:25:16.994Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 42.1 MB (beats 98.86%)  
+**Submitted:** 2026-10-24T04:26:47.678Z  
 
 ```java
 class Solution {
     public int numIdenticalPairs(int[] nums) {
 
         int count = 0;
-        HashMap<Integer, Integer> map = new HashMap<>();
+        int[] map = new int[101];
 
         for(int num : nums){
-            map.put(num,map.getOrDefault(num,0) + 1);
+            map[num]++;
         }
 
-        for(int freq : map.values()){
+        for(int freq : map){
             count += (freq * (freq-1)) / 2;
         }
 
