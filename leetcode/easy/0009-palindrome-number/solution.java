@@ -7,13 +7,13 @@ class Solution {
 
         // return (sb.toString().equals(orig)); 
         if (x < 0) return false;     
+        
         long ans = 0;
         int temp = x;
         
         
-        while(temp != 0){
-            int rem = temp % 10;
-            ans = ans * 10 + rem;
+        while(temp > 0){
+            ans = ans * 10 + temp % 10;
             temp /= 10;
         }        
 
