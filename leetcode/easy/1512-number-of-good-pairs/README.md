@@ -46,9 +46,9 @@ Output: 0
 ## Solution
 
 **Language:** Java  
-**Runtime:** 2 ms (beats 5.88%)  
-**Memory:** 42.1 MB (beats 98.86%)  
-**Submitted:** 2026-10-24T03:37:51.724Z  
+**Runtime:** 1 ms (beats 84.38%)  
+**Memory:** 42.4 MB (beats 87.68%)  
+**Submitted:** 2026-10-24T03:41:48.849Z  
 
 ```java
 class Solution {
@@ -58,7 +58,7 @@ class Solution {
 
         for(int i=0; i<nums.length; i++){
 
-            for(int j=0; j<nums.length; j++){
+            for(int j=i+1; j<nums.length; j++){
 
                 if(nums[i] == nums[j] && i < j) count++;
             }
