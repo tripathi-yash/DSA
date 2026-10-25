@@ -37,32 +37,34 @@ Explanation: The common factors of 25 and 30 are 1, 5.
 ## Solution
 
 **Language:** Java  
-**Runtime:** 1 ms (beats 71.91%)  
-**Memory:** 42 MB (beats 51.43%)  
-**Submitted:** 2026-10-25T03:52:15.270Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 42 MB (beats 66.94%)  
+**Submitted:** 2026-10-25T04:00:23.506Z  
 
 ```java
 class Solution {
-    public int commonFactors(int a, int b) {
-        
-        HashSet<Integer> set = new HashSet<>();
 
-        for(int i=1; i*i <= a; i++){
+    private int gcd(int a, int b){
+
+        while(b > 0){
             
-            if((a % i) == 0) {
-                set.add(i);
-                set.add(a/i);
-            }
+            a %= b;
+            int temp = b;
+            b = a;
+            a = temp;
         }
 
+        return a;
+    }
+    public int commonFactors(int a, int b) {
+        
+        int gcd = gcd(a,b);
         int cmnFact = 0;
-        for(int i=1; i*i <= b; i++){
 
-            if((b % i) == 0) {
+        for(int i=1; i*i <= gcd; i++){
 
-                if(set.contains(i)) cmnFact++;
-                if(i != (b/i) && set.contains(b/i)) cmnFact++;
-            }
+            if((gcd % i) == 0) cmnFact++;
+            if(i != (gcd/i) && (gcd % i) == 0) cmnFact++;
         }
 
         return cmnFact;
