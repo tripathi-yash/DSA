@@ -22,7 +22,7 @@ class Codechef
 		    long sum = 0;
 		    
 		    if(sc.hasNextInt()){
-		        n = sc.nextLong();
+		        n = sc.nextInt();
 		    }
 		    
 		    while( n > 0){
