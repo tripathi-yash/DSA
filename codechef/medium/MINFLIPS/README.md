@@ -64,7 +64,7 @@ Output
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-10-26T15:39:54.621Z  
+**Submitted:** 2026-10-26T15:50:35.709Z  
 
 ```java
 import java.util.*;
@@ -91,18 +91,28 @@ class Codechef
     		    n = sc.nextInt();
     		}
     		
-    		int[] arr = new arr[n];
+    		int[] arr = new int[n];
     		int i = 0;
     		
     		while(sc.hasNextInt() && i < n){
-    		    arr[i] = sc.nextInt();
+    		    arr[i++] = sc.nextInt();
     		}
     		
-    		for()
+    		int countOnes = 0, countNegOnes = 0;
     		
+    		for(int j=0; j<n; j++){
+    		    if (arr[j] == 1) countOnes++;
+    		    if (arr[j] == -1) countNegOnes++;
+    		}
     		
+    		int diff = Math.abs(countNegOnes - countOnes);
     		
-    		System.out.println(serve(x,y));
+    		if(diff % 2 == 1){
+    		    System.out.println(-1);
+    		}
+    		
+    		else System.out.println( diff / 2);
+    	
 		}
     
 	}
