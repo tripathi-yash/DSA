@@ -4,23 +4,37 @@ import java.io.*;
 
 class Codechef
 {
-    public static int serve(int x, int y){
-        return x * y;
-    }
 	public static void main (String[] args) throws java.lang.Exception
 	{
 		// your code goes here
 		Scanner sc = new Scanner(System.in);
 		
-		int x = 0;
-		int y = 0;
-		
+		int t = 0;
 		if(sc.hasNextInt()){
-		    x = sc.nextInt();
-		    y = sc.nextInt();
+		    t = sc.nextInt();
 		}
 		
-		System.out.println(serve(x,y));
+		while(t-- > 0) {
+		    
+    		int n = 0;
+    		
+    		if(sc.hasNextInt()){
+    		    n = sc.nextInt();
+    		}
+    		
+    		int[] arr = new arr[n];
+    		int i = 0;
+    		
+    		while(sc.hasNextInt() && i < n){
+    		    arr[i] = sc.nextInt();
+    		}
+    		
+    		for()
+    		
+    		
+    		
+    		System.out.println(serve(x,y));
+		}
     
 	}
 }
