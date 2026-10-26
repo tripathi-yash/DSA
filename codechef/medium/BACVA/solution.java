@@ -21,7 +21,7 @@ class Codechef
 		    long n = 0;
 		    long sum = 0;
 		    
-		    if(sc.hasNextLong()){
+		    if(sc.hasNextInt()){
 		        n = sc.nextLong();
 		    }
 		    
