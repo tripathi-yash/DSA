@@ -21,8 +21,8 @@ class Codechef
 		    long n = 0;
 		    long sum = 0;
 		    
-		    if(sc.hasNextInt()){
-		        n = sc.nextInt();
+		    if(sc.hasNextLong()){
+		        n = sc.nextLong();
 		    }
 		    
 		    while( n > 0){
