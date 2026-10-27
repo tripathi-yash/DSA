@@ -4,11 +4,11 @@ class Solution {
         Arrays.sort(arr);
         
         int count = 1, maxCount = 1;
-        int maxEl = arr[0], lastSeen = arr[0];
+        int maxEl = arr[0];
         
         for(int i=1; i<arr.length; i++){
             
-            if(arr[i] == lastSeen){
+            if(arr[i] == arr[i-1]){
                 count++;
             }
             else{
@@ -21,7 +21,6 @@ class Solution {
                 maxCount = count;
             }
             
-            lastSeen = arr[i];
         }
         
         return maxEl;
