@@ -31,7 +31,7 @@ Explanation: 0 and 3 are two most frequent elements of this array. 3 is the maxi
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-10-27T05:44:09.534Z  
+**Submitted:** 2026-10-27T05:44:40.603Z  
 
 ```java
 class Solution {
@@ -40,11 +40,11 @@ class Solution {
         Arrays.sort(arr);
         
         int count = 1, maxCount = 1;
-        int maxEl = arr[0], lastSeen = arr[0];
+        int maxEl = arr[0];
         
         for(int i=1; i<arr.length; i++){
             
-            if(arr[i] == lastSeen){
+            if(arr[i] == arr[i-1]){
                 count++;
             }
             else{
@@ -57,7 +57,6 @@ class Solution {
                 maxCount = count;
             }
             
-            lastSeen = arr[i];
         }
         
         return maxEl;
