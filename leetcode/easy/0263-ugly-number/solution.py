@@ -6,13 +6,18 @@ class Solution:
 
         i = 2
 
-        while( i*i <= n):
+        for i in [2,3,5]:
 
-            if((n%i) == 0 and ((n // i) % 2 != 0 )):
-                if(i not in [2,3,5] or n // i not in [2,3,5]):
-                   return False
+            while(n % i == 0):
+                n //= i
+
+        return n == 1
+               
+
             
-            i += 1
+
+            
+
 
         return True
 
