@@ -50,29 +50,15 @@ Explanation: There is no x where 3x = (-1).
 ## Solution
 
 **Language:** Python  
-**Runtime:** 29 ms (beats 12.38%)  
-**Memory:** 11.9 MB (beats 98.35%)  
-**Submitted:** 2026-10-29T17:11:57.905Z  
+**Runtime:** 19 ms (beats 23.71%)  
+**Memory:** 19.1 MB (beats 85.32%)  
+**Submitted:** 2026-10-29T17:25:18.877Z  
 
 ```py
-class Solution(object):
-    def isPowerOfThree(self, n):
-        """
-        :type n: int
-        :rtype: bool
-        """
-
-        if(n <= 0):
-            return False
-
-
-        while( n > 1 and (n % 3 == 0)):
-            n //= 3
-
-
-
-        return n == 1
+class Solution:
+    def isPowerOfThree(self, n: int) -> bool:
         
+        return n > 0 and (pow(3,19) % n == 0)
 ```
 
 ---
