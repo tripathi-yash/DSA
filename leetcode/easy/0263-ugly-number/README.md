@@ -46,9 +46,9 @@ Explanation: 14 is not ugly since it includes the prime factor 7.
 ## Solution
 
 **Language:** Python  
-**Runtime:** 0 ms  
-**Memory:** 19.2 MB  
-**Submitted:** 2026-10-29T15:51:49.044Z  
+**Runtime:** 1 ms (beats 30.58%)  
+**Memory:** 19.4 MB (beats 6.12%)  
+**Submitted:** 2026-10-29T16:03:21.230Z  
 
 ```py
 class Solution:
@@ -59,13 +59,18 @@ class Solution:
 
         i = 2
 
-        while( i*i <= n):
+        for i in [2,3,5]:
 
-            if((n%i) == 0 and ((n // i) % 2 != 0 )):
-                if(i not in [2,3,5] or n // i not in [2,3,5]):
-                   return False
+            while(n % i == 0):
+                n //= i
+
+        return n == 1
+               
+
             
-            i += 1
+
+            
+
 
         return True
 
