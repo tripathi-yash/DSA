@@ -78,7 +78,7 @@ The password is `WEC`.
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-10-29T12:35:27.586Z  
+**Submitted:** 2026-10-29T12:35:36.161Z  
 
 ```java
 import java.util.*;
