@@ -42,9 +42,9 @@ Output: 0
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 41 MB  
-**Submitted:** 2026-10-31T12:02:38.661Z  
+**Runtime:** 114 ms (beats 88.59%)  
+**Memory:** 50.4 MB (beats 95.54%)  
+**Submitted:** 2026-10-31T12:02:13.411Z  
 
 ```java
 class Solution {
@@ -56,7 +56,7 @@ class Solution {
 
             if(isPrime[i]){
 
-                for(int j=i*i; j<n; j += i){
+                for(int j=2*i; j<n; j += i){
                     isPrime[j] = false;
                 }
             }
