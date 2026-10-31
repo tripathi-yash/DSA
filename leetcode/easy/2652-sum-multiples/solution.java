@@ -5,10 +5,7 @@ class Solution {
 
         while(n > 0){
             
-            if(n % 3 == 0) sum += n;
-            else if(n % 5 == 0) sum += n;
-            else if(n % 7 == 0) sum += n;
-
+            if(n % 3 == 0 || n % 5 == 0 || n % 7 == 0) sum += n;
             n--;
         }
 
