@@ -52,8 +52,8 @@ The input binary string  **1111111111111111111111111111101**  has a total of thi
 
 **Language:** Python  
 **Runtime:** 1 ms (beats 35.52%)  
-**Memory:** 12.1 MB (beats 88.58%)  
-**Submitted:** 2026-11-01T02:36:23.966Z  
+**Memory:** 12 MB (beats 95.58%)  
+**Submitted:** 2026-11-01T02:40:05.657Z  
 
 ```py
 class Solution(object):
@@ -65,9 +65,12 @@ class Solution(object):
         count = 0
         while n != 0:
 
-            if(n & 1 == 1):
-                count += 1
-            n >>= 1
+            # if(n & 1 == 1):
+            #     count += 1
+            # n >>= 1
+
+            n &= (n-1)
+            count += 1
         
         return count
     
