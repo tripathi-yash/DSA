@@ -37,9 +37,9 @@ Output: [[],[0]]
 ## Solution
 
 **Language:** Python  
-**Runtime:** 0 ms  
-**Memory:** 19.4 MB  
-**Submitted:** 2026-11-02T22:59:35.659Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 19.3 MB (beats 59.67%)  
+**Submitted:** 2026-11-02T23:16:49.605Z  
 
 ```py
 class Solution:
@@ -47,13 +47,11 @@ class Solution:
         
         ans = [[]]
 
-        if(len(nums) > 1):
-            for i in range(len(nums)):
-                ans.append([nums[i]])
-                for j in range(i+1,len(nums)):
-                    ans.append([nums[i],nums[j]])
-
-        ans.append(nums)
+        for num in nums:
+            temp = []
+            for curr in ans:
+                temp.append([num] + curr)
+            ans.extend(temp)
         
         return ans
 ```
