@@ -37,9 +37,9 @@ Output: [[],[0]]
 ## Solution
 
 **Language:** Java  
-**Runtime:** 1 ms (beats 88.63%)  
-**Memory:** 43.8 MB (beats 92.17%)  
-**Submitted:** 2026-10-23T05:42:04.806Z  
+**Runtime:** 1 ms (beats 90.72%)  
+**Memory:** 43.7 MB (beats 87.51%)  
+**Submitted:** 2026-11-02T22:27:16.800Z  
 
 ```java
 class Solution {
@@ -50,6 +50,7 @@ class Solution {
             ans.add(new ArrayList<>(subset));
             return;
         }
+
 
         subset.add(nums[i]);
         solver(nums, i+1, ans, subset);
