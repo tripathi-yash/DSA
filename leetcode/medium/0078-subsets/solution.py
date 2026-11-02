@@ -3,12 +3,10 @@ class Solution:
         
         ans = [[]]
 
-        if(len(nums) > 1):
-            for i in range(len(nums)):
-                ans.append([nums[i]])
-                for j in range(i+1,len(nums)):
-                    ans.append([nums[i],nums[j]])
-
-        ans.append(nums)
+        for num in nums:
+            temp = []
+            for curr in ans:
+                temp.append([num] + curr)
+            ans.extend(temp)
         
         return ans
