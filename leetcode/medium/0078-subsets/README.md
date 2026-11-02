@@ -36,36 +36,26 @@ Output: [[],[0]]
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 1 ms (beats 90.72%)  
-**Memory:** 43.7 MB (beats 87.51%)  
-**Submitted:** 2026-11-02T22:27:16.800Z  
+**Language:** Python  
+**Runtime:** 0 ms  
+**Memory:** 19.4 MB  
+**Submitted:** 2026-11-02T22:59:35.659Z  
 
-```java
-class Solution {
+```py
+class Solution:
+    def subsets(self, nums: list[int]) -> list[list[int]]:
+        
+        ans = [[]]
 
-    public void solver(int[] nums, int i, List<List<Integer>> ans, List<Integer> subset){
+        if(len(nums) > 1):
+            for i in range(len(nums)):
+                ans.append([nums[i]])
+                for j in range(i+1,len(nums)):
+                    ans.append([nums[i],nums[j]])
 
-        if(i == nums.length) {
-            ans.add(new ArrayList<>(subset));
-            return;
-        }
-
-
-        subset.add(nums[i]);
-        solver(nums, i+1, ans, subset);
-        subset.remove(subset.size()-1);
-        solver(nums, i+1, ans, subset);
-    }
-    
-    public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> ans = new ArrayList<>();
-        List<Integer> subset = new ArrayList<>();
-
-        solver(nums, 0, ans, subset);
-        return ans;
-    }
-}
+        ans.append(nums)
+        
+        return ans
 ```
 
 ---
