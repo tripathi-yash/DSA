@@ -31,14 +31,14 @@ Explanation: The sorted array will be [1, 4, 9].
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-10-26T04:33:25.268Z  
+**Submitted:** 2026-11-05T15:37:42.383Z  
 
 ```java
 class Solution {
     // Please change the array in-place
     public void insertionSort(int arr[]) {
         // code here
-        for(int i=0; i<arr.length; i++){
+        for(int i=1; i<arr.length; i++){
             
             int key = arr[i];
             int j = i-1;
