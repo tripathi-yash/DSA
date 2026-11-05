@@ -35,45 +35,43 @@ Output: ["a","b","c"]
 
 ## Solution
 
-**Language:** Java  
+**Language:** Python  
 **Runtime:** 0 ms (beats 100.00%)  
-**Memory:** 43.3 MB (beats 69.24%)  
-**Submitted:** 2026-11-05T12:12:18.622Z  
+**Memory:** 19.4 MB (beats 33.35%)  
+**Submitted:** 2026-11-05T12:40:37.799Z  
 
-```java
-class Solution {
-    
-    String[] phone = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+```py
+class Solution:
 
-    public void solve(int index, String digits, List<String> ans, StringBuilder curr){
+    phone = ["", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
+
+    def solve(self,idx,digits,ans,curr):
+
+        if not digits:
+            return []
+
+        if idx == len(digits):
+            ans.append(curr)
+            return
+
+        j = ord(digits[idx]) - ord('0')
+
+        temp = self.phone[j]
+
+        for i in range(len(temp)):
+
+            curr += temp[i]
+            self.solve(idx+1,digits,ans,curr)
+            curr = curr[:len(curr)-1]
+
+    def letterCombinations(self, digits: str) -> list[str]:
         
-        if(index == digits.length()){
-            String temp = curr.toString();
-            ans.add(temp);
-            return;
-        }
-        
-        int j = digits.charAt(index) - '0';
+        ans = []
+        curr = ""
 
-        String sc = phone[j];
+        self.solve(0,digits,ans,curr)
 
-        for(int i=0; i<sc.length(); i++){
-            curr.append(sc.charAt(i));
-            solve(index+1, digits, ans, curr);
-
-            curr.deleteCharAt(curr.length()-1);
-        }
-    }
-    public List<String> letterCombinations(String digits) {
-        
-        List<String> ans = new ArrayList<>();
-        StringBuilder curr = new StringBuilder();
-
-        solve(0,  digits, ans, curr);
-
-        return ans;
-    }
-}
+        return ans
 ```
 
 ---
