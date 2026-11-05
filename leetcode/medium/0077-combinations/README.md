@@ -38,38 +38,33 @@ Explanation: There is 1 choose 1 = 1 total combination.
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 19 ms (beats 50.29%)  
-**Memory:** 97.5 MB (beats 90.92%)  
-**Submitted:** 2026-10-30T05:31:33.770Z  
+**Language:** Python  
+**Runtime:** 135 ms (beats 20.20%)  
+**Memory:** 61.4 MB (beats 57.83%)  
+**Submitted:** 2026-11-05T13:40:43.277Z  
 
-```java
-class Solution {
+```py
+class Solution:
 
-    public void solve(int idx, int n, int k, List<Integer> curr, List<List<Integer>> ans){
- 
-        if(curr.size() == k){
-            ans.add(new ArrayList<>(curr));
-            return;
-        }
+    def solve(self, idx , n, k, ans, curr):
 
-        for(int i=idx; i<=n; i++){
-            curr.add(i);
-            solve(i+1,n,k,curr,ans);
-            curr.remove(curr.size()-1);
-        }
+        if len(curr) == k:
+            ans.append(curr[:])
+            return 
 
-    }
-    public List<List<Integer>> combine(int n, int k) {
+        for i in range(idx,n+1):
+            curr.append(i)
+            self.solve(i+1,n,k,ans,curr)
+            curr.pop(len(curr)-1)
 
-        List<List<Integer>> ans = new ArrayList<>(); // final answer
+    def combine(self, n: int, k: int) -> list[list[int]]:
+        
+        ans = []
+        curr = []
 
-        List<Integer> curr = new ArrayList<>(); // temp list to store combinations
-        solve(1,n,k,curr,ans);
+        self.solve(1, n, k, ans, curr)
 
-        return ans;
-    }
-}
+        return ans
 ```
 
 ---
