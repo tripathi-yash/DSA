@@ -28,30 +28,26 @@ Explanation: The sorted array will be [1, 4, 9].
 
 ## Solution
 
-**Language:** Java  
+**Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-05T15:37:42.383Z  
+**Submitted:** 2026-11-05T16:16:34.758Z  
 
-```java
-class Solution {
-    // Please change the array in-place
-    public void insertionSort(int arr[]) {
-        // code here
-        for(int i=1; i<arr.length; i++){
+```py
+class Solution:
+    def insertionSort(self, arr):
+        # code here
+        for i in range(1,len(arr)):
             
-            int key = arr[i];
-            int j = i-1;
+            key = arr[i]
+            j = i-1
             
-            while(j>=0 && arr[j] > key){
-                arr[j+1] = arr[j];
-                j--;
-            }
+            while (j >= 0 and arr[j] > key ):
+                arr[j+1] = arr[j]
+                j -= 1
             
             arr[j+1] = key;
-        }
-    }
-}
+        
 ```
 
 ---
