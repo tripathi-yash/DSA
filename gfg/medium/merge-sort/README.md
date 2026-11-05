@@ -23,59 +23,46 @@ Explanation: We get the sorted array after using merge sort
 
 ## Solution
 
-**Language:** Python  
+**Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-05T17:21:26.327Z  
+**Submitted:** 2026-11-05T17:21:37.180Z  
 
-```py
-class Solution:
+```java
+class Solution {
     
-    def mergeArr(self,arr, l, mid, r): 
-        n = r-l+1
-        temp = [0]*n
-        i = l
-        j = mid+1
-        k = 0
+    public void arrSort(int arr[], int l, int mid, int r){
         
-        while(i<=mid and j<=r):
-            
-            if(arr[i] < arr[j]):
-                temp[k] = arr[i]
-                i+=1
-            else:
-                temp[k] = arr[j]
-                j+=1
-            k+=1
-            
-        while(i<=mid):
-            temp[k] = arr[i]
-            i+=1
-            k+=1
-            
-        while(j<=r):
-            temp[k] = arr[j]
-            j+=1
-            k+=1
-            
-        for x in range(n):
-            arr[x+l] = temp[x]
+        int[] auxArr = new int[r-l+1];
+        int i=l , j = mid+1, k=0;
+    
+        while(i <= mid && j <= r){
+            if(arr[i] < arr[j]){
+                auxArr[k] = arr[i++];
+            }
+            else auxArr[k] = arr[j++];
+            k++;
+        }
         
-            
-    def mergeSort(self, arr, l, r):
-        # code here
+        while(i<=mid) auxArr[k++] = arr[i++];
+        while(j<=r) auxArr[k++] = arr[j++];
         
-        if(l>=r): 
-            return
+        for(int x=0; x<auxArr.length; x++){
+            arr[l+x] = auxArr[x];
+        }
+    }
+    public void mergeSort(int arr[], int l, int r) {
+        // code here
+        if(l>=r) return;
         
-        mid = l + (r-l)//2
+        int mid = l + (r - l) / 2;
         
-        self.mergeSort(arr, l, mid)
-        self.mergeSort(arr, mid+1, r)
+        mergeSort(arr, l, mid);
+        mergeSort(arr, mid+1, r);
         
-        self.mergeArr(arr,l,mid,r)
-        
-        
+        arrSort(arr, l, mid, r);
+    }
+}
 ```
 
 ---
