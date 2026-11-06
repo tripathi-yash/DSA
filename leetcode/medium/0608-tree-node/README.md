@@ -92,20 +92,30 @@ Explanation: If there is only one node on the tree, you only need to output its 
 
 ## Solution
 
-**Language:** SQL  
-**Runtime:** 643 ms (beats 24.06%)  
-**Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-11-06T09:46:33.579Z  
+**Language:** Python  
+**Runtime:** 356 ms (beats 20.00%)  
+**Memory:** 66.6 MB (beats 76.67%)  
+**Submitted:** 2026-11-06T10:29:42.324Z  
 
-```sql
-# Write your MySQL query statement below
-select id, 
-case 
-    when p_id is null then "Root"
-    when id in (select distinct p_id from tree where p_id is not null) then "Inner"
-    else "Leaf"
-end as type
-from tree;
+```py
+import pandas as pd
+
+def tree_node(tree: pd.DataFrame) -> pd.DataFrame:
+    
+    parent_nodes = tree["p_id"].dropna().unique()
+
+    def determine_type(row):
+
+        if pd.isna(row["p_id"]):
+            return "Root"
+        elif row["id"] in parent_nodes:
+            return "Inner"
+        else:
+            return "Leaf"
+
+    tree["type"] = tree.apply(determine_type, axis=1)
+
+    return tree[["id", "type"]]       
 ```
 
 ---
