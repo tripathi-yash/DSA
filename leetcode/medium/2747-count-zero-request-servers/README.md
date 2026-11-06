@@ -52,62 +52,60 @@ For queries[1]: Only server with id 3 gets no request in the duration [2,4].
 ## Solution
 
 **Language:** Java  
-**Runtime:** 54 ms (beats 11.54%)  
-**Memory:** 150.6 MB (beats 17.31%)  
-**Submitted:** 2026-11-06T23:28:28.881Z  
+**Runtime:** 66 ms (beats 5.77%)  
+**Memory:** 150.4 MB (beats 18.27%)  
+**Submitted:** 2026-11-06T23:44:33.137Z  
 
 ```java
-import java.util.Arrays;
-import java.util.HashMap;
+class Solution {
+    public int[] countServers(int n, int[][] logs, int x, int[] queries) {
+        
+        // sorting + sliding windiw approach
+        Arrays.sort(logs, (a,b) -> a[1] - b[1]);
+        int[][] queriesWithIdx = new int[queries.length][2];
 
-class Solution { 
-    public int[] countServers(int n, int[][] logs, int x, int[] queries) { 
-        // 1. Sort logs based on their timestamps
-        Arrays.sort(logs, (a, b) -> Integer.compare(a[1], b[1])); 
-        
-        // 2. Pair queries with their original indexes to preserve order after sorting
-        int[][] queriesWithIdx = new int[queries.length][2]; 
-        for (int i = 0; i < queries.length; i++) { 
-            queriesWithIdx[i] = new int[]{queries[i], i}; 
-        } 
-        // Sort queries based on their query times
-        Arrays.sort(queriesWithIdx, (a, b) -> Integer.compare(a[0], b[0])); 
-        
-        HashMap<Integer, Integer> cnt = new HashMap<>(); 
-        int[] ans = new int[queries.length]; 
-        int leftPtr = 0, rightPtr = 0; 
-        
-        // 3. Process each query using the sliding window approach
-        for (int j = 0; j < queriesWithIdx.length; j++) { 
-            int lowerBound = queriesWithIdx[j][0] - x; 
-            int rightBound = queriesWithIdx[j][0]; 
-            int originalIdx = queriesWithIdx[j][1]; 
-            
-            // Expand the window: Add logs that fall within the current right boundary
-            while (rightPtr < logs.length && logs[rightPtr][1] <= rightBound) { 
-                cnt.put(logs[rightPtr][0], cnt.getOrDefault(logs[rightPtr][0], 0) + 1); 
-                rightPtr++; 
-            } 
-            
-            // Shrink the window: Remove logs that fall behind the lower boundary
-            while (leftPtr < logs.length && logs[leftPtr][1] < lowerBound) { 
-                int serverId = logs[leftPtr][0];
-                if (cnt.containsKey(serverId)) { 
-                    cnt.put(serverId, cnt.get(serverId) - 1); 
-                    if (cnt.get(serverId) == 0) { 
-                        cnt.remove(serverId); 
-                    } 
-                } 
-                leftPtr++; 
-            } 
-            
-            // Total servers minus the count of active unique servers in the map
-            ans[originalIdx] = n - cnt.size(); 
-        } 
-        return ans; 
-    } 
+        for(int i=0; i<queries.length; i++){
+            queriesWithIdx[i] = new int[]{queries[i], i};
+        }
+        Arrays.sort(queriesWithIdx, (a,b) -> a[0] - b[0]);
+
+        HashMap<Integer,Integer> cnt = new HashMap<>();
+        int[] ans = new int[queries.length];
+
+        int leftPtr = 0, rightPtr = 0;
+
+        for(int j=0; j<queriesWithIdx.length; j++){
+
+            int lowerBound = queriesWithIdx[j][0] - x;
+            int rightBound = queriesWithIdx[j][0];
+            int originalIdx = queriesWithIdx[j][1];
+
+            while( rightPtr < logs.length && 
+                    logs[rightPtr][1] <= rightBound){
+
+                        cnt.put(logs[rightPtr][0], cnt.getOrDefault(logs[rightPtr][0],0)+1);
+                        rightPtr++;
+                    }
+
+            while( leftPtr < logs.length && 
+                    logs[leftPtr][1] < lowerBound){
+
+                        if( cnt.containsKey(logs[leftPtr][0]) ){
+
+                            cnt.put(logs[leftPtr][0], cnt.get(logs[leftPtr][0])-1);
+                            if(cnt.get(logs[leftPtr][0]) <= 0)  {
+                                
+                                cnt.remove(logs[leftPtr][0]);
+                            }
+                        }
+                        leftPtr++;
+                    }
+
+            ans[originalIdx] = n - cnt.size();
+        }
+        return ans;
+    }
 }
-
 
         // int[] ans = new int[queries.length];
         // int[] currRange = new int[2];
