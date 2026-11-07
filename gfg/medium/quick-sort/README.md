@@ -28,47 +28,43 @@ Explanation: All elements are identical, so the array remains unchanged.
 
 ## Solution
 
-**Language:** Java  
+**Language:** Python  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-10-26T09:56:01.973Z  
+**Submitted:** 2026-11-07T02:20:42.178Z  
 
-```java
-class Solution {
-    public void quickSort(int[] arr, int low, int high) {
-        // code here
-        if( low < high){
+```py
+class Solution:
+    def quickSort(self, arr, low, high):
+        # code here
+        
+        if(low < high):
             
-            int pivot = partition(arr, low, high); 
-            quickSort(arr, low, pivot-1);
-            quickSort(arr, pivot+1, high);
-        }
-    }
+            pivot = self.partition(arr,low,high)
+            
+            self.quickSort(arr,low,pivot-1)
+            self.quickSort(arr,pivot+1,high)
 
-    private int partition(int[] arr, int low, int high) {
-        // code here
+    def partition(self, arr, low, high):
+        # code here
+        pivot = arr[high]
         
-        int pivot = arr[high];
-        int i = low-1;
+        i = low-1
         
-        for(int j=low; j<high; j++){
+        for j in range(low,high):
             
-            if(arr[j] <= pivot) {
+            if(arr[j] < pivot):
+                i += 1
+                temp = arr[i]
+                arr[i] = arr[j]
+                arr[j] = temp
                 
-               i += 1;
-               int temp = arr[j];
-               arr[j] = arr[i];
-               arr[i] = temp;
-            }
-        }
+        temp = arr[i+1]
+        arr[i+1] = arr[high]
+        arr[high] = temp
         
-        int temp = arr[high];
-        arr[high] = arr[i+1];
-        arr[i+1] = temp;
+        return i+1
         
-        return i+1;
-    }
-}
 ```
 
 ---
