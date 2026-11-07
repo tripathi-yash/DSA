@@ -42,42 +42,41 @@ Output: [[1]]
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 2 ms (beats 40.75%)  
-**Memory:** 45.1 MB (beats 86.34%)  
-**Submitted:** 2026-10-30T06:36:33.701Z  
+**Language:** Python  
+**Runtime:** 1 ms (beats 53.88%)  
+**Memory:** 19.5 MB (beats 59.21%)  
+**Submitted:** 2026-11-07T07:03:07.278Z  
 
-```java
-class Solution {
+```py
+class Solution:
 
-    public void solve(int idx, int[] nums, List<Integer> curr, List<List<Integer>> ans, boolean[] isPresent){
+    def solve(self, idx, nums, curr, ans, freq):
 
-        if(idx == nums.length){
-            ans.add(new ArrayList<>(curr));
-            return;
-        }
+        if(idx == len(nums)):
+            ans.append(list(curr))
+            return
 
-        for(int i=0; i<nums.length; i++){
-            if(isPresent[nums[i]+10]) continue;
-            isPresent[nums[i]+10] = true;
-            curr.add(nums[i]);
+        for i in range(len(nums)):
 
-            solve(idx+1, nums,curr, ans, isPresent);
-            curr.remove(curr.size()-1);
-            isPresent[nums[i]+10] = false;
-            
-        }
-    }
+            if(freq[nums[i]+10]):
+                continue
+            freq[nums[i]+10] = True
+            curr.append(nums[i])
 
-    public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> ans = new ArrayList<>();
-        List<Integer> curr = new ArrayList<>();
-        boolean[] isPresent = new boolean[21];
+            self.solve(idx+1,nums,curr,ans,freq)
 
-        solve(0,nums, curr, ans, isPresent);
-        return ans;
-    }
-}
+            freq[nums[i]+10] = False
+            curr.pop(len(curr)-1)
+
+    def permute(self, nums: list[int]) -> list[list[int]]:
+        
+        curr = []
+        ans = []
+        freq = [False] * 21
+
+        self.solve(0,nums,curr,ans,freq)
+
+        return ans
 ```
 
 ---
