@@ -62,45 +62,52 @@ Explanation: Same as Example 1, except with the 5 in the top left corner being m
 
 ## Solution
 
-**Language:** Python  
-**Runtime:** 0 ms  
-**Memory:** 19.2 MB  
-**Submitted:** 2026-11-08T13:00:32.402Z  
+**Language:** Java  
+**Runtime:** 1 ms (beats 99.96%)  
+**Memory:** 45.8 MB (beats 89.34%)  
+**Submitted:** 2026-11-08T13:13:12.954Z  
 
-```py
-class Solution(object):
-    def isValidSudoku(self, board):
-        """
-        :type board: List[List[str]] or List[List[int]]
-        :rtype: bool
-        """
-        # Create 9 tracking sets each for rows, columns, and 3x3 boxes
-        rows = [set() for _ in range(9)]
-        cols = [set() for _ in range(9)]
-        boxes = [set() for _ in range(9)]
+```java
+class Solution {
 
-        for r in range(9):
-            for c in range(9):
-                val = board[r][c]
+    public boolean check(char[][] board, int row, int col, int num){
 
-                # Skip empty cells (handles both standard string '.' or integer 0 formats)
-                if val == '.' or val == 0:
-                    continue
+        for(int i=0; i<9; i++){
 
-                # Map the 2D coordinates (r, c) to a 1D box index (0 to 8)
-                box_idx = (r // 3) * 3 + (c // 3)
+            if(i != col && board[row][i] == num) return false;
+            if(i != row && board[i][col] == num) return false;
+        }
 
-                # If the value is already present in this row, col, or box -> Invalid Sudoku
-                if val in rows[r] or val in cols[c] or val in boxes[box_idx]:
-                    return False
+        int r = (row / 3) * 3;
+        int c = (col / 3) * 3;
 
-                # Otherwise, record the value
-                rows[r].add(val)
-                cols[c].add(val)
-                boxes[box_idx].add(val)
+        for(int j=r; j<r+3; j++){
+            for(int k=c; k<c+3; k++){
 
-        return True
+                if(j!=row && k!=col && board[j][k] == num) return false;
+            }
+        }
 
+        return true;
+    }
+
+    public boolean isValidSudoku(char[][] board) {
+        
+        for(int i=0; i<9; i++){
+            for(int j=0; j<9; j++){
+
+                if(board[i][j] != '.'){
+                    if(!check(board, i, j, board[i][j])) return false;
+                }
+            }    
+        }
+        return true;
+    }
+}
+
+
+
+        
 ```
 
 ---
