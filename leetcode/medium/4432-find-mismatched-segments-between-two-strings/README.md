@@ -55,9 +55,9 @@ The two strings are identical, so there are no mismatched segments.
 ## Solution
 
 **Language:** Java  
-**Runtime:** 3 ms (beats 33.40%)  
-**Memory:** 46.2 MB (beats 72.75%)  
-**Submitted:** 2026-11-08T04:07:20.181Z  
+**Runtime:** 4 ms (beats 13.26%)  
+**Memory:** 46.3 MB (beats 72.75%)  
+**Submitted:** 2026-11-08T05:57:33.396Z  
 
 ```java
 class Solution {
