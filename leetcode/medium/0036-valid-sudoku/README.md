@@ -62,45 +62,63 @@ Explanation: Same as Example 1, except with the 5 in the top left corner being m
 
 ## Solution
 
-**Language:** Python  
-**Runtime:** 8 ms (beats 10.05%)  
-**Memory:** 19.3 MB (beats 62.97%)  
-**Submitted:** 2026-11-08T13:00:16.450Z  
+**Language:** Java  
+**Runtime:** 2 ms (beats 66.97%)  
+**Memory:** 45.8 MB (beats 93.76%)  
+**Submitted:** 2026-11-08T12:59:18.088Z  
 
-```py
-class Solution:
-    def isValidSudoku(self, board: List[List[str]]) -> bool:
+```java
+class Solution {
+
+    public boolean check(char[][] board, int row, int col, char num) {
+        // 1. Check rows and columns
+        for (int i = 0; i < 9; i++) {
+            if (i != col && board[row][i] == num) {
+                return false;
+            }
+            if (i != row && board[i][col] == num) {
+                return false;
+            }
+        }
+
+        // Find the 3x3 block top-left corner (Java integer division drops the remainder automatically)
+        int r = (row / 3) * 3;
+        int c = (col / 3) * 3;
+
+        // 2. Check the 3x3 box
+        for (int i = r; i < r + 3; i++) {
+            for (int j = c; j < c + 3; j++) {
+                // Only skip the exact current cell itself
+                if (i == row && j == col) {
+                    continue;
+                }
+                if (board[i][j] == num) {
+                    return false;
+                }
+            }
+        }
         
-        row = {}
-        col = {}
-        mat = {}
+        return true;
+    }
 
-        for i in range(9):
-            row[i] = set()
-            col[i] = set()
+    public boolean isValidSudoku(char[][] board) {
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
+                // Skip checking empty cells (handles character '.')
+                if (board[row][col] == '.') {
+                    continue;
+                }
 
+                if (!check(board, row, col, board[row][col])) {
+                    return false;
+                }
+            }
+        }
 
-        for i in range(9):
-            for j in range(9):
-                mat[(i//3,j//3)] = set()
-        
-        for i in range(9):
-            for j in range(9):
+        return true;
+    }
+}
 
-                if board[i][j] == '.':
-                    continue
-
-                if( board[i][j] in row[i] or
-                    board[i][j] in col[j] or 
-                    board[i][j] in mat[(i//3,j//3)] ):
-
-                    return False
-
-                row[i].add(board[i][j])
-                col[j].add(board[i][j])
-                mat[(i//3,j//3)].add(board[i][j])
-
-        return True
 ```
 
 ---
