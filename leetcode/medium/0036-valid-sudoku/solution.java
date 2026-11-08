@@ -1,46 +1,20 @@
 class Solution {
 
-    public boolean unique(char[][] board, int[] indices){
+    public boolean check(char[][] board, int row, int col, int num){
 
-        int lastRowIdx = indices[0];
-        int lastColIdx = indices[1];
+        for(int i=0; i<9; i++){
 
-        for(int currRowIdx = indices[0] - 3; currRowIdx < lastRowIdx; currRowIdx++){
-
-            for(int currColIdx = indices[1] - 3; currColIdx < lastColIdx; currColIdx++){
-                
-                char currVal;
-                if(board[currRowIdx][currColIdx] != '.'){
-
-                    currVal = board[currRowIdx][currColIdx];
-
-                    for(int i = indices[0] - 3 ; i < lastRowIdx; i++){
-
-                        for(int k = indices[1] - 3 ; k < lastColIdx; k++){
-
-                            if( (currVal == board[i][k]) && (i != currRowIdx || k != currColIdx) ){
-                                return false;
-                            }  
-                        }
-                    }
-
-                }
-            }
+            if(i != col && board[row][i] == num) return false;
+            if(i != row && board[i][col] == num) return false;
         }
 
-        return true;
-    }
+        int r = (row / 3) * 3;
+        int c = (col / 3) * 3;
 
-    public boolean unique(char[] arr){
+        for(int j=r; j<r+3; j++){
+            for(int k=c; k<c+3; k++){
 
-        for(int i=0; i<arr.length; i++){
-
-            char val = arr[i];
-            for(int j=0; j<arr.length; j++){
-                
-                if( arr[i] != '.' && (i != j) && (arr[j] == val)){
-                    return false;
-                }
+                if(j!=row && k!=col && board[j][k] == num) return false;
             }
         }
 
@@ -49,45 +23,18 @@ class Solution {
 
     public boolean isValidSudoku(char[][] board) {
         
-        // row check
         for(int i=0; i<9; i++){
-
-            char[] arr = new char[board.length];
             for(int j=0; j<9; j++){
-                
-                arr[j] = board[i][j]; 
-            }
-            if(!unique(arr)){
-                return false;
-            }
+
+                if(board[i][j] != '.'){
+                    if(!check(board, i, j, board[i][j])) return false;
+                }
+            }    
         }
-
-        // column check
-        for(int i=0; i<9; i++){
-
-            char[] arr = new char[board.length];
-
-            for(int j=0; j<9; j++){
-                
-                arr[j] = board[j][i]; 
-            }
-            if(!unique(arr)){
-                return false;
-            }
-        }
-
-        // 3 * 3 matrix check
-        int[][] indices = {{3,3},{3,6},{3,9},{6,3},{6,6},{6,9},{9,3},{9,6},{9,9}};
-        
-        for(int i=0; i<9; i++){
-
-            int[] currIdxPairs = indices[i];
-
-            if(!unique(board,currIdxPairs)){
-                return false;
-            }
-        }
-
         return true;
     }
 }
+
+
+
+        
