@@ -62,62 +62,44 @@ Explanation: Same as Example 1, except with the 5 in the top left corner being m
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 2 ms (beats 66.97%)  
-**Memory:** 45.8 MB (beats 93.76%)  
-**Submitted:** 2026-11-08T12:59:18.088Z  
+**Language:** Python  
+**Runtime:** 3 ms (beats 75.84%)  
+**Memory:** 19.1 MB (beats 95.54%)  
+**Submitted:** 2026-11-08T13:00:39.862Z  
 
-```java
-class Solution {
+```py
+class Solution(object):
+    def isValidSudoku(self, board):
+        """
+        :type board: List[List[str]] or List[List[int]]
+        :rtype: bool
+        """
+        # Create 9 tracking sets each for rows, columns, and 3x3 boxes
+        rows = [set() for _ in range(9)]
+        cols = [set() for _ in range(9)]
+        boxes = [set() for _ in range(9)]
 
-    public boolean check(char[][] board, int row, int col, char num) {
-        // 1. Check rows and columns
-        for (int i = 0; i < 9; i++) {
-            if (i != col && board[row][i] == num) {
-                return false;
-            }
-            if (i != row && board[i][col] == num) {
-                return false;
-            }
-        }
+        for r in range(9):
+            for c in range(9):
+                val = board[r][c]
 
-        // Find the 3x3 block top-left corner (Java integer division drops the remainder automatically)
-        int r = (row / 3) * 3;
-        int c = (col / 3) * 3;
+                # Skip empty cells (handles both standard string '.' or integer 0 formats)
+                if val == '.' or val == 0:
+                    continue
 
-        // 2. Check the 3x3 box
-        for (int i = r; i < r + 3; i++) {
-            for (int j = c; j < c + 3; j++) {
-                // Only skip the exact current cell itself
-                if (i == row && j == col) {
-                    continue;
-                }
-                if (board[i][j] == num) {
-                    return false;
-                }
-            }
-        }
-        
-        return true;
-    }
+                # Map the 2D coordinates (r, c) to a 1D box index (0 to 8)
+                box_idx = (r // 3) * 3 + (c // 3)
 
-    public boolean isValidSudoku(char[][] board) {
-        for (int row = 0; row < 9; row++) {
-            for (int col = 0; col < 9; col++) {
-                // Skip checking empty cells (handles character '.')
-                if (board[row][col] == '.') {
-                    continue;
-                }
+                # If the value is already present in this row, col, or box -> Invalid Sudoku
+                if val in rows[r] or val in cols[c] or val in boxes[box_idx]:
+                    return False
 
-                if (!check(board, row, col, board[row][col])) {
-                    return false;
-                }
-            }
-        }
+                # Otherwise, record the value
+                rows[r].add(val)
+                cols[c].add(val)
+                boxes[box_idx].add(val)
 
-        return true;
-    }
-}
+        return True
 
 ```
 
