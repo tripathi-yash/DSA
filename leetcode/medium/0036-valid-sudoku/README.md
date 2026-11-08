@@ -62,45 +62,105 @@ Explanation: Same as Example 1, except with the 5 in the top left corner being m
 
 ## Solution
 
-**Language:** Python  
-**Runtime:** 3 ms (beats 75.84%)  
-**Memory:** 19.1 MB (beats 95.54%)  
-**Submitted:** 2026-11-08T13:00:39.862Z  
+**Language:** Java  
+**Runtime:** 2 ms (beats 66.97%)  
+**Memory:** 46.2 MB (beats 72.60%)  
+**Submitted:** 2026-11-08T12:58:16.008Z  
 
-```py
-class Solution(object):
-    def isValidSudoku(self, board):
-        """
-        :type board: List[List[str]] or List[List[int]]
-        :rtype: bool
-        """
-        # Create 9 tracking sets each for rows, columns, and 3x3 boxes
-        rows = [set() for _ in range(9)]
-        cols = [set() for _ in range(9)]
-        boxes = [set() for _ in range(9)]
+```java
+class Solution {
 
-        for r in range(9):
-            for c in range(9):
-                val = board[r][c]
+    public boolean unique(char[][] board, int[] indices){
 
-                # Skip empty cells (handles both standard string '.' or integer 0 formats)
-                if val == '.' or val == 0:
-                    continue
+        int lastRowIdx = indices[0];
+        int lastColIdx = indices[1];
 
-                # Map the 2D coordinates (r, c) to a 1D box index (0 to 8)
-                box_idx = (r // 3) * 3 + (c // 3)
+        for(int currRowIdx = indices[0] - 3; currRowIdx < lastRowIdx; currRowIdx++){
 
-                # If the value is already present in this row, col, or box -> Invalid Sudoku
-                if val in rows[r] or val in cols[c] or val in boxes[box_idx]:
-                    return False
+            for(int currColIdx = indices[1] - 3; currColIdx < lastColIdx; currColIdx++){
+                
+                char currVal;
+                if(board[currRowIdx][currColIdx] != '.'){
 
-                # Otherwise, record the value
-                rows[r].add(val)
-                cols[c].add(val)
-                boxes[box_idx].add(val)
+                    currVal = board[currRowIdx][currColIdx];
 
-        return True
+                    for(int i = indices[0] - 3 ; i < lastRowIdx; i++){
 
+                        for(int k = indices[1] - 3 ; k < lastColIdx; k++){
+
+                            if( (currVal == board[i][k]) && (i != currRowIdx || k != currColIdx) ){
+                                return false;
+                            }  
+                        }
+                    }
+
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public boolean unique(char[] arr){
+
+        for(int i=0; i<arr.length; i++){
+
+            char val = arr[i];
+            for(int j=0; j<arr.length; j++){
+                
+                if( arr[i] != '.' && (i != j) && (arr[j] == val)){
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public boolean isValidSudoku(char[][] board) {
+        
+        // row check
+        for(int i=0; i<9; i++){
+
+            char[] arr = new char[board.length];
+            for(int j=0; j<9; j++){
+                
+                arr[j] = board[i][j]; 
+            }
+            if(!unique(arr)){
+                return false;
+            }
+        }
+
+        // column check
+        for(int i=0; i<9; i++){
+
+            char[] arr = new char[board.length];
+
+            for(int j=0; j<9; j++){
+                
+                arr[j] = board[j][i]; 
+            }
+            if(!unique(arr)){
+                return false;
+            }
+        }
+
+        // 3 * 3 matrix check
+        int[][] indices = {{3,3},{3,6},{3,9},{6,3},{6,6},{6,9},{9,3},{9,6},{9,9}};
+        
+        for(int i=0; i<9; i++){
+
+            int[] currIdxPairs = indices[i];
+
+            if(!unique(board,currIdxPairs)){
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
 ```
 
 ---
