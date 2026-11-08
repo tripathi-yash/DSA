@@ -1,47 +1,90 @@
 class Solution {
 
-    public boolean check(char[][] board, int row, int col, char num) {
-        // 1. Check rows and columns
-        for (int i = 0; i < 9; i++) {
-            if (i != col && board[row][i] == num) {
-                return false;
-            }
-            if (i != row && board[i][col] == num) {
-                return false;
+    public boolean unique(char[][] board, int[] indices){
+
+        int lastRowIdx = indices[0];
+        int lastColIdx = indices[1];
+
+        for(int currRowIdx = indices[0] - 3; currRowIdx < lastRowIdx; currRowIdx++){
+
+            for(int currColIdx = indices[1] - 3; currColIdx < lastColIdx; currColIdx++){
+                
+                char currVal;
+                if(board[currRowIdx][currColIdx] != '.'){
+
+                    currVal = board[currRowIdx][currColIdx];
+
+                    for(int i = indices[0] - 3 ; i < lastRowIdx; i++){
+
+                        for(int k = indices[1] - 3 ; k < lastColIdx; k++){
+
+                            if( (currVal == board[i][k]) && (i != currRowIdx || k != currColIdx) ){
+                                return false;
+                            }  
+                        }
+                    }
+
+                }
             }
         }
 
-        // Find the 3x3 block top-left corner (Java integer division drops the remainder automatically)
-        int r = (row / 3) * 3;
-        int c = (col / 3) * 3;
+        return true;
+    }
 
-        // 2. Check the 3x3 box
-        for (int i = r; i < r + 3; i++) {
-            for (int j = c; j < c + 3; j++) {
-                // Only skip the exact current cell itself
-                if (i == row && j == col) {
-                    continue;
-                }
-                if (board[i][j] == num) {
+    public boolean unique(char[] arr){
+
+        for(int i=0; i<arr.length; i++){
+
+            char val = arr[i];
+            for(int j=0; j<arr.length; j++){
+                
+                if( arr[i] != '.' && (i != j) && (arr[j] == val)){
                     return false;
                 }
             }
         }
-        
+
         return true;
     }
 
     public boolean isValidSudoku(char[][] board) {
-        for (int row = 0; row < 9; row++) {
-            for (int col = 0; col < 9; col++) {
-                // Skip checking empty cells (handles character '.')
-                if (board[row][col] == '.') {
-                    continue;
-                }
+        
+        // row check
+        for(int i=0; i<9; i++){
 
-                if (!check(board, row, col, board[row][col])) {
-                    return false;
-                }
+            char[] arr = new char[board.length];
+            for(int j=0; j<9; j++){
+                
+                arr[j] = board[i][j]; 
+            }
+            if(!unique(arr)){
+                return false;
+            }
+        }
+
+        // column check
+        for(int i=0; i<9; i++){
+
+            char[] arr = new char[board.length];
+
+            for(int j=0; j<9; j++){
+                
+                arr[j] = board[j][i]; 
+            }
+            if(!unique(arr)){
+                return false;
+            }
+        }
+
+        // 3 * 3 matrix check
+        int[][] indices = {{3,3},{3,6},{3,9},{6,3},{6,6},{6,9},{9,3},{9,6},{9,9}};
+        
+        for(int i=0; i<9; i++){
+
+            int[] currIdxPairs = indices[i];
+
+            if(!unique(board,currIdxPairs)){
+                return false;
             }
         }
 
