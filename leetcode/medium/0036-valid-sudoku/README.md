@@ -63,44 +63,44 @@ Explanation: Same as Example 1, except with the 5 in the top left corner being m
 ## Solution
 
 **Language:** Python  
-**Runtime:** 17 ms (beats 5.22%)  
-**Memory:** 12.3 MB (beats 71.07%)  
-**Submitted:** 2026-11-08T12:57:16.419Z  
+**Runtime:** 8 ms (beats 10.05%)  
+**Memory:** 19.3 MB (beats 62.97%)  
+**Submitted:** 2026-11-08T12:58:04.273Z  
 
 ```py
-class Solution(object):
-
-    def check(self, board, row, col, num):
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        
+        row = {}
+        col = {}
+        mat = {}
 
         for i in range(9):
-            if i != col and board[row][i] == num:
-                return False
-            if i != row and board[i][col] == num:
-                return False
+            row[i] = set()
+            col[i] = set()
 
-        r = (row//3)*3
-        c = (col//3)*3
 
-        for i in range(r,r+3):
-            for j in range(c,c+3):       
-                if i != row and j != col and board[i][j] == num:
+        for i in range(9):
+            for j in range(9):
+                mat[(i//3,j//3)] = set()
+        
+        for i in range(9):
+            for j in range(9):
+
+                if board[i][j] == '.':
+                    continue
+
+                if( board[i][j] in row[i] or
+                    board[i][j] in col[j] or 
+                    board[i][j] in mat[(i//3,j//3)] ):
+
                     return False
-        
-        return True
 
-    def isValidSudoku(self, board):
-        """
-        :type board: List[List[str]]
-        :rtype: bool
-        """
-        for row in range(9):
-            for col in range(9):
-                if board[row][col] != '.':
-                    if not self.check(board,row,col, board[row][col]):
-                        return False
+                row[i].add(board[i][j])
+                col[j].add(board[i][j])
+                mat[(i//3,j//3)].add(board[i][j])
 
         return True
-        
 ```
 
 ---
