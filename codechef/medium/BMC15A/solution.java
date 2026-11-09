@@ -30,7 +30,7 @@ class Codechef
     		    i++;
     		}
     		
-    		System.out.println(i);
+    		System.out.println(i-1);
 		}
     
 	}
