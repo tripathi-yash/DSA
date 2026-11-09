@@ -57,7 +57,7 @@ Output
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-09T14:30:43.703Z  
+**Submitted:** 2026-11-09T14:31:13.321Z  
 
 ```java
 import java.util.*;
@@ -66,7 +66,7 @@ import java.io.*;
 
 class Codechef
 {
-    public int gcd(int x, int y){
+    public static int gcd(int x, int y){
         
         while(y != 0){
             
