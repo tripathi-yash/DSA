@@ -4,7 +4,7 @@ import java.io.*;
 
 class Codechef
 {
-    public int gcd(int x, int y){
+    public static int gcd(int x, int y){
         
         while(y != 0){
             
