@@ -82,7 +82,7 @@ The only group is the single student at index $3$.
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-09T15:44:39.080Z  
+**Submitted:** 2026-11-09T15:51:39.024Z  
 
 ```java
 import java.util.*;
@@ -99,12 +99,13 @@ class Codechef
 		// your code goes here
 		Scanner sc = new Scanner(System.in);
 		int t = sc.nextInt();
+		sc.nextLine();
 		
 		while(t-- > 0){
 		    
     		String str = "";
     		
-    		if(sc.hasNext()){
+    		if(sc.hasNextLine()){
     		    str = sc.nextLine();
     		}
     		
@@ -135,18 +136,19 @@ class Codechef
     		        }
     		    }
     		    
-    		    if(currStart != -1){
-    		            
-    		            currEnd = i-1;
-    		            currLen = currEnd - currStart +1;
-    		            
-    		            if(currLen > maxLen){
-    		                maxLen = currLen;
-    		                bestEnd = currEnd;
-    		                bestStart = currStart;
-    		            }
-    		      }
     		}
+    		
+		    if(currStart != -1){
+		            
+	            currEnd = str.length()-1;
+	            currLen = currEnd - currStart +1;
+	            
+	            if(currLen > maxLen){
+	                maxLen = currLen;
+	                bestEnd = currEnd;
+	                bestStart = currStart;
+	            }
+		      }
     		
     		System.out.println(bestStart + " " + bestEnd);
 		}
