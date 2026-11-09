@@ -18,7 +18,7 @@ class Codechef
 		
 		while(x-- > 0){
 		    
-		    String str = sc.nextLine();
+		    String str = sc.next();
 		    int k = sc.nextInt();
 		    
 		    int l=0, r;
@@ -40,7 +40,7 @@ class Codechef
 		          
 		          if(isFound) break;
 		          
-		          if(str.charAt(l) > str.length() ) l++;
+		          if(str.charAt(l) > str.charAt(r) ) l++;
 		    }
 		    
 		    System.out.println(str.substring(l, r+1));
