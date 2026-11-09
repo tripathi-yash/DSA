@@ -11,16 +11,58 @@ class Codechef
 	{
 		// your code goes here
 		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
 		
-		int x = 0;
-		int y = 0;
-		
-		if(sc.hasNextInt()){
-		    x = sc.nextInt();
-		    y = sc.nextInt();
+		while(t-- > 0){
+		    
+    		String str = "";
+    		
+    		if(sc.hasNext()){
+    		    str = sc.nextLine();
+    		}
+    		
+    		int currStart = -1, currEnd = 0, bestStart = 0, bestEnd = 0, currLen = 0, maxLen = 0;
+    		
+    		for(int i=0; i<str.length(); i++){
+    		    
+    		    if(str.charAt(i) == 'm'){
+    		        
+    		        if(currStart == -1){
+    		            currStart = i;
+    		        }
+    		    }
+    		    else{
+    		        
+    		        if(currStart != -1){
+    		            
+    		            currEnd = i-1;
+    		            currLen = currEnd - currStart +1;
+    		            
+    		            if(currLen > maxLen){
+    		                maxLen = currLen;
+    		                bestEnd = currEnd;
+    		                bestStart = currStart;
+    		            }
+    		            
+    		            currStart = -1;
+    		        }
+    		    }
+    		    
+    		    if(currStart != -1){
+    		            
+    		            currEnd = i-1;
+    		            currLen = currEnd - currStart +1;
+    		            
+    		            if(currLen > maxLen){
+    		                maxLen = currLen;
+    		                bestEnd = currEnd;
+    		                bestStart = currStart;
+    		            }
+    		      }
+    		}
+    		
+    		System.out.println(bestStart + " " + bestEnd);
 		}
-		
-		System.out.println(serve(x,y));
     
 	}
 }
