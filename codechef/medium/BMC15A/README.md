@@ -57,7 +57,7 @@ Output
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-09T14:14:44.063Z  
+**Submitted:** 2026-11-09T14:17:51.360Z  
 
 ```java
 import java.util.*;
@@ -66,9 +66,7 @@ import java.io.*;
 
 class Codechef
 {
-    public static int serve(int x, int y){
-        return x * y;
-    }
+    
 	public static void main (String[] args) throws java.lang.Exception
 	{
 		// your code goes here
@@ -87,11 +85,14 @@ class Codechef
     		    y = sc.nextInt();
     		}
     		
+    		int i = 1;
     		
+    		while(((x % i) == 0) && ((y % i) == 0)){
+    		    
+    		    i++;
+    		}
     		
-    		while()
-    		
-    		System.out.println(serve(x,y));
+    		System.out.println(i);
 		}
     
 	}
