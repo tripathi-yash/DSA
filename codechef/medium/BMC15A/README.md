@@ -57,7 +57,7 @@ Output
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-09T14:21:48.857Z  
+**Submitted:** 2026-11-09T14:30:43.703Z  
 
 ```java
 import java.util.*;
@@ -66,6 +66,17 @@ import java.io.*;
 
 class Codechef
 {
+    public int gcd(int x, int y){
+        
+        while(y != 0){
+            
+            int temp = y;
+            y = x % y;
+            x = temp;
+        }
+        
+        return x;
+    }
     
 	public static void main (String[] args) throws java.lang.Exception
 	{
@@ -92,7 +103,7 @@ class Codechef
     		    i++;
     		}
     		
-    		System.out.println(i-1);
+    		System.out.println(gcd(x,y));
 		}
     
 	}
