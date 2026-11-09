@@ -56,7 +56,7 @@ NO
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-09T13:53:54.240Z  
+**Submitted:** 2026-11-09T14:01:33.896Z  
 
 ```java
 import java.util.*;
@@ -73,15 +73,32 @@ class Codechef
 		// your code goes here
 		Scanner sc = new Scanner(System.in);
 		
-		int x = 0;
-		int y = 0;
+		int t = 0;
 		
-		if(sc.hasNextInt()){
-		    x = sc.nextInt();
-		    y = sc.nextInt();
+		if(sc.hasNextInt()) {
+		    t = sc.nextInt();
 		}
 		
-		System.out.println(serve(x,y));
+		while(t-- > 0){
+		    
+    		int P = 0;
+    		int D = 0;
+    		int K = 0;
+    		int B = 0;
+    		
+    		if(sc.hasNextInt()){
+    		    P = sc.nextInt();
+    		    D = sc.nextInt();
+    		    K = sc.nextInt();
+    		    B = sc.nextInt();
+    		}
+    		
+    		int k_cost = K * D + P;
+    		
+    		if(k_cost > K) System.out.println("NO");
+    		else System.out.println("YES");
+		}
+		
     
 	}
 }
