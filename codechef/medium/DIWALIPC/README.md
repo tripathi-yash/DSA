@@ -56,7 +56,7 @@ NO
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-09T14:01:33.896Z  
+**Submitted:** 2026-11-09T14:06:54.231Z  
 
 ```java
 import java.util.*;
@@ -65,9 +65,7 @@ import java.io.*;
 
 class Codechef
 {
-    public static int serve(int x, int y){
-        return x * y;
-    }
+    
 	public static void main (String[] args) throws java.lang.Exception
 	{
 		// your code goes here
@@ -95,7 +93,7 @@ class Codechef
     		
     		int k_cost = K * D + P;
     		
-    		if(k_cost > K) System.out.println("NO");
+    		if(k_cost > B) System.out.println("NO");
     		else System.out.println("YES");
 		}
 		
