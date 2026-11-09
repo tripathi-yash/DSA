@@ -4,6 +4,17 @@ import java.io.*;
 
 class Codechef
 {
+    public int gcd(int x, int y){
+        
+        while(y != 0){
+            
+            int temp = y;
+            y = x % y;
+            x = temp;
+        }
+        
+        return x;
+    }
     
 	public static void main (String[] args) throws java.lang.Exception
 	{
@@ -30,7 +41,7 @@ class Codechef
     		    i++;
     		}
     		
-    		System.out.println(i-1);
+    		System.out.println(gcd(x,y));
 		}
     
 	}
