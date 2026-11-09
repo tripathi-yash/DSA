@@ -83,19 +83,22 @@ Explanation: There are no single numbers in the input table so we return null.
 
 ## Solution
 
-**Language:** SQL  
-**Runtime:** 551 ms (beats 20.71%)  
-**Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-10-27T22:06:34.038Z  
+**Language:** Python  
+**Runtime:** 277 ms (beats 64.72%)  
+**Memory:** 66.2 MB (beats 80.60%)  
+**Submitted:** 2026-11-09T13:20:51.419Z  
 
-```sql
-SELECT MAX(num) AS num
-FROM (
-    SELECT num
-    FROM MyNumbers
-    GROUP BY num
-    HAVING COUNT(num) = 1
-) AS unique_numbers;
+```py
+import pandas as pd
+
+def biggest_single_number(my_numbers: pd.DataFrame) -> pd.DataFrame:
+    my_numbers = my_numbers.drop_duplicates(keep=False)
+
+    max_ = my_numbers.max()
+
+    return pd.DataFrame({"num" : max_})
+
+    
 
 ```
 
