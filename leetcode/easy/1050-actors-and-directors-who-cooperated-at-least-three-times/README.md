@@ -56,18 +56,21 @@ Explanation: The only pair is (1, 1) where they cooperated exactly 3 times.
 
 ## Solution
 
-**Language:** SQL  
-**Runtime:** 293 ms (beats 100.00%)  
-**Memory:** 0B (beats 100.00%)  
-**Submitted:** 2026-11-10T22:47:15.100Z  
+**Language:** Python  
+**Runtime:** 310 ms (beats 24.68%)  
+**Memory:** 77 MB (beats 5.93%)  
+**Submitted:** 2026-11-10T22:53:57.091Z  
 
-```sql
-# Write your MySQL query statement below
+```py
+import pandas as pd
 
-select actor_id, director_id
-from actordirector
-group by actor_id, director_id
-having count(*) > 2;
+def actors_and_directors(actor_director: pd.DataFrame) -> pd.DataFrame:
+    
+    grouped = actor_director.groupby(['actor_id', 'director_id']).size().reset_index(name = 'count')
+
+    ans = grouped[['actor_id','director_id']][grouped['count'] >= 3]
+
+    return ans
 ```
 
 ---
