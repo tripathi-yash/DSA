@@ -63,8 +63,8 @@ Since no items are required (`need1 = need2 = 0`), we buy nothing and pay 0.
 
 **Language:** Java  
 **Runtime:** 2 ms (beats 41.18%)  
-**Memory:** 42.1 MB (beats 89.71%)  
-**Submitted:** 2026-11-11T09:22:23.476Z  
+**Memory:** 42.2 MB (beats 85.29%)  
+**Submitted:** 2026-11-11T09:41:52.124Z  
 
 ```java
 class Solution {
@@ -72,9 +72,22 @@ class Solution {
         
         long totalCost = 0;
 
-        totalCost += (long)Math.min(cost1+cost2, costBoth) * Math.min(need1,need2);
-        totalCost += (long)Math.min(cost1, costBoth) * (need1 - Math.min(need1,need2));
-        totalCost += (long)Math.min(cost2, costBoth) * (need2 - Math.min(need1,need2));
+        if((cost1+cost2) <= costBoth){
+            totalCost += (long)cost1 * need1 + (long)cost2 * need2;
+        }
+        else{
+            int min = Math.min(need1,need2);
+            totalCost += (long)costBoth * Math.min(need1,need2);
+
+            need1 -= min;
+            need2 -= min;
+
+            if(need1 > 0) totalCost += (long) Math.min(cost1,costBoth) * need1;
+            if(need2 > 0) totalCost += (long) Math.min(cost2,costBoth) * need2;
+        }
+        // totalCost += (long)Math.min(cost1+cost2, costBoth) * Math.min(need1,need2);
+        // totalCost += (long)Math.min(cost1, costBoth) * (need1 - Math.min(need1,need2));
+        // totalCost += (long)Math.min(cost2, costBoth) * (need2 - Math.min(need1,need2));
 
         return totalCost;
     }
