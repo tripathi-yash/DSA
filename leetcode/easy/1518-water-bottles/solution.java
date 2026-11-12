@@ -12,6 +12,6 @@ class Solution {
             remToDrink = exchangedBottles + (remToDrink % numExchange);
         }
 
-        return totalDrunk += exchangedBottles;
+        return totalDrunk + exchangedBottles;
     }
 }
