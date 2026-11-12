@@ -45,8 +45,8 @@ Number of water bottles you can drink: 15 + 3 + 1 = 19.
 
 **Language:** Java  
 **Runtime:** 0 ms (beats 100.00%)  
-**Memory:** 41.4 MB (beats 89.32%)  
-**Submitted:** 2026-11-12T11:50:03.610Z  
+**Memory:** 41.3 MB (beats 96.81%)  
+**Submitted:** 2026-11-12T11:51:56.713Z  
 
 ```java
 class Solution {
@@ -63,7 +63,7 @@ class Solution {
             remToDrink = exchangedBottles + (remToDrink % numExchange);
         }
 
-        return totalDrunk += exchangedBottles;
+        return totalDrunk + exchangedBottles;
     }
 }
 ```
