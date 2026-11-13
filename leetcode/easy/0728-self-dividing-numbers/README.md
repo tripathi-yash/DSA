@@ -14,6 +14,8 @@ Given two integers `left` and `right`, return  *a list of all the  **self-dividi
 
  
 
+Original
+Python3
  **Example 1:** 
 
 ```
@@ -38,40 +40,36 @@ Output: [48,55,66,77]
 
 ## Solution
 
-**Language:** Java  
-**Runtime:** 2 ms (beats 98.59%)  
-**Memory:** 42.2 MB (beats 88.31%)  
-**Submitted:** 2026-10-25T04:23:08.450Z  
+**Language:** Python  
+**Runtime:** 4 ms (beats 77.65%)  
+**Memory:** 19.1 MB (beats 95.54%)  
+**Submitted:** 2026-11-13T17:53:56.910Z  
 
-```java
-class Solution {
-
-    private boolean isselfDividing(int num){
+```py
+class Solution:
+    def selfDividingNumbers(self, left: int, right: int) -> list[int]:
         
-        int temp = num;
+        ans = []
 
-        while(temp != 0){
+        for i in range(left, right+1):
+            temp = i
 
-            int lstDig = temp % 10;
-            if(lstDig == 0 || num % lstDig != 0) return false;
-            temp /= 10;
-        }
+            isSelfDiv = True
+            while(temp != 0):
+                rem = temp % 10
 
-        return true;
-    }
+                if((rem != 0) and ((i % rem) == 0) ):
+                    temp //= 10
+                    
+                else:
+                    isSelfDiv = False
+                    break
 
-    public List<Integer> selfDividingNumbers(int left, int right) {
-        
-        List<Integer> ansNumbers = new ArrayList<>();
+            if(isSelfDiv):
+                ans.append(i)
 
-        for(int i=left; i<=right; i++){
+        return ans
 
-            if(isselfDividing(i)) ansNumbers.add(i);
-        }
-
-        return ansNumbers;
-    }
-}
 ```
 
 ---
