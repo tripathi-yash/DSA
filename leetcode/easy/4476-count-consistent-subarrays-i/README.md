@@ -66,9 +66,9 @@ The only subarray is `[0]`, whose bitwise AND and minimum value are both 0. Ther
 ## Solution
 
 **Language:** Java  
-**Runtime:** 20 ms (beats 4.53%)  
-**Memory:** 45.9 MB (beats 42.07%)  
-**Submitted:** 2026-11-15T04:08:53.667Z  
+**Runtime:** 24 ms (beats 4.53%)  
+**Memory:** 46 MB (beats 10.55%)  
+**Submitted:** 2026-11-15T04:09:55.822Z  
 
 ```java
 class Solution {
