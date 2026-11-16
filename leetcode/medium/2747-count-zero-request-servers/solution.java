@@ -48,6 +48,7 @@ class Solution {
     }
 }
 
+// hashset + O(Q * L)
         // int[] ans = new int[queries.length];
         // int[] currRange = new int[2];
 
