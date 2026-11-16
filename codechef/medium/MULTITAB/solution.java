@@ -25,7 +25,7 @@ class Codechef
     		    y = sc.nextInt();
     		}
     		
-    		if(x * 3 <= x * y) System.out.println("YES");
+    		if(y / 3 >= x) System.out.println("YES");
     		else System.out.println("NO");
 		}
 	}
