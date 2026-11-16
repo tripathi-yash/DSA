@@ -53,7 +53,7 @@ YES
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-16T13:47:15.171Z  
+**Submitted:** 2026-11-16T13:49:34.074Z  
 
 ```java
 import java.util.*;
@@ -83,7 +83,7 @@ class Codechef
     		    y = sc.nextInt();
     		}
     		
-    		if(x * 3 <= x * y) System.out.println("YES");
+    		if(y / 3 >= x) System.out.println("YES");
     		else System.out.println("NO");
 		}
 	}
