@@ -14,6 +14,8 @@ Note that the time intervals are inclusive.
 
  
 
+Original
+Java
  **Example 1:** 
 
 ```
@@ -52,9 +54,9 @@ For queries[1]: Only server with id 3 gets no request in the duration [2,4].
 ## Solution
 
 **Language:** Java  
-**Runtime:** 66 ms (beats 5.77%)  
-**Memory:** 150.4 MB (beats 18.27%)  
-**Submitted:** 2026-11-06T23:44:33.137Z  
+**Runtime:** 58 ms (beats 5.24%)  
+**Memory:** 150.5 MB (beats 8.42%)  
+**Submitted:** 2026-11-16T18:00:44.278Z  
 
 ```java
 class Solution {
@@ -107,6 +109,7 @@ class Solution {
     }
 }
 
+// hashset + O(Q * L)
         // int[] ans = new int[queries.length];
         // int[] currRange = new int[2];
 
