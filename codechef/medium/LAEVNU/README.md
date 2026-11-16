@@ -78,7 +78,7 @@ Both extracted digits are zero. The resulting number is printed as $0$.
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-16T15:05:16.605Z  
+**Submitted:** 2026-11-16T15:08:38.580Z  
 
 ```java
 import java.util.*;
