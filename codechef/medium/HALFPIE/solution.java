@@ -4,9 +4,7 @@ import java.io.*;
 
 class Codechef
 {
-    public static int serve(int x, int y){
-        return x * y;
-    }
+    
 	public static void main (String[] args) throws java.lang.Exception
 	{
 		// your code goes here
@@ -31,7 +29,7 @@ class Codechef
     		int max1 = Integer.MIN_VALUE;
     		int max2 = Integer.MIN_VALUE;
     		
-    		int sum = 0;
+    		long sum = 0;
     		
     		for(int i=0; i<y; i++){
     		    
