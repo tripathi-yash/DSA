@@ -30,25 +30,19 @@ class Codechef
     		int min2 = Integer.MAX_VALUE;
     		
     		long sum = 0;
+    		int min = Integer.MAX_VALUE;
     		
     		for(int i=0; i<y; i++){
     		    
     		    sum += arr[i];
     		    
-    		    if(min1 > arr[i]){
-    		        min2 = min2;
-    		        min1 = arr[i];
-    		    }
-    		    else if(min2 > arr[i]){
-    		        min2 = arr[i];
+    		    if(i>0){
+    		        
+    		        min = Math.min(min, (arr[i] + arr[i-1])/2);
     		    }
     		}
-    		   
-    		min1 /= 2;
-    		min2 /=2;
     		
-    	System.out.println(sum - min1 - min2);
-    		
+    	    System.out.println(sum - min);
 		}
 	}
 }
