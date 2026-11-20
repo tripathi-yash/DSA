@@ -10,6 +10,8 @@ The solution set  **must not**  contain duplicate subsets. Return the solution i
 
  
 
+Original
+Python
  **Example 1:** 
 
 ```
@@ -37,23 +39,34 @@ Output: [[],[0]]
 ## Solution
 
 **Language:** Python  
-**Runtime:** 0 ms (beats 100.00%)  
-**Memory:** 19.3 MB (beats 59.67%)  
-**Submitted:** 2026-11-02T23:16:49.605Z  
+**Runtime:** 1 ms (beats 24.08%)  
+**Memory:** 12.3 MB (beats 95.56%)  
+**Submitted:** 2026-11-20T20:27:55.434Z  
 
 ```py
-class Solution:
-    def subsets(self, nums: list[int]) -> list[list[int]]:
-        
-        ans = [[]]
+class Solution(object):
+    def solve(self, i, nums, curr, ans ):
 
-        for num in nums:
-            temp = []
-            for curr in ans:
-                temp.append([num] + curr)
-            ans.extend(temp)
-        
+        if(i == len(nums)):
+            ans.append(curr[:])
+            return
+
+        curr.append(nums[i])
+        self.solve(i+1, nums, curr, ans)
+        curr.pop(len(curr)-1)
+        self.solve(i+1, nums, curr, ans)
+    
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        ans = []
+
+        self.solve(0, nums, [], ans)
+
         return ans
+        
 ```
 
 ---
