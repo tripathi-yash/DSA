@@ -37,17 +37,14 @@ Explanation: The 1st Fibonacci number is 1.
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-22T13:23:09.876Z  
+**Submitted:** 2026-11-22T13:24:46.667Z  
 
 ```java
 class Solution {
     static int nthFibonacci(int n) {
         // code here
-        if (n==0) return 0;
-        if (n==1) return 1;
-        
-        int first = 1, sec = 1;
-        for(int i=2; i<=n; i++){
+        int first = 0, sec = 1;
+        for(int i=0; i<n; i++){
             
             int next = first + sec;
             first = sec;
