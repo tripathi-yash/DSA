@@ -12,15 +12,21 @@ class Codechef
 		// your code goes here
 		Scanner sc = new Scanner(System.in);
 		
-		int x = 0;
-		int y = 0;
+		String str = new String();
+		str = sc.next();
 		
-		if(sc.hasNextInt()){
-		    x = sc.nextInt();
-		    y = sc.nextInt();
+		StringBuilder curr = new StringBuilder();
+		
+		for(int i=0; i<str.length(); i++){
+		    
+		    char c = str.charAt(i);
+		    if(c == '#' && (curr.length()) != 0){
+		        curr.deleteCharAt(curr.length()-1);
+		    }else
+		    curr.append(c);
 		}
 		
-		System.out.println(serve(x,y));
+		System.out.println((curr.length() > 0 ) ? curr.toString() : "");
     
 	}
 }
