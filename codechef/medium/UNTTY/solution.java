@@ -20,9 +20,9 @@ class Codechef
 		for(int i=0; i<str.length(); i++){
 		    
 		    char c = str.charAt(i);
-		    if(c == '#' && (curr.length()) != 0){
+		    if(c == '#' && (curr.length()) > 0){
 		        curr.deleteCharAt(curr.length()-1);
-		    }else
+		    }else if(c != '#')
 		    curr.append(c);
 		}
 		
