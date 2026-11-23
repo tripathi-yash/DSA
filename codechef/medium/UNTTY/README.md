@@ -79,7 +79,7 @@ The first `#` does nothing because the text is empty. Typing `a` gives `a`, and 
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-23T14:34:46.135Z  
+**Submitted:** 2026-11-23T14:36:56.639Z  
 
 ```java
 import java.util.*;
@@ -104,9 +104,9 @@ class Codechef
 		for(int i=0; i<str.length(); i++){
 		    
 		    char c = str.charAt(i);
-		    if(c == '#' && (curr.length()) != 0){
+		    if(c == '#' && (curr.length()) > 0){
 		        curr.deleteCharAt(curr.length()-1);
-		    }else
+		    }else if(c != '#')
 		    curr.append(c);
 		}
 		
