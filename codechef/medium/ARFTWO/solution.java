@@ -11,7 +11,9 @@ class Codechef
 	{
 		// your code goes here
 		Scanner sc = new Scanner(System.in);
-		
+		int t = 0;
+		while(t-- > 0){
+		    
 		int x = 0;
 		int y = 0;
 		int z = 0;
@@ -43,5 +45,6 @@ class Codechef
 		}
 		System.out.println((sum(first, sec) >= total) ? "YES" : "NO");
     
+		}
 	}
 }
