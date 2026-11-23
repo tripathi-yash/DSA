@@ -4,9 +4,7 @@ import java.io.*;
 
 class Codechef
 {
-    public static int serve(int x, int y){
-        return x * y;
-    }
+    
 	public static void main (String[] args) throws java.lang.Exception
 	{
 		// your code goes here
@@ -20,7 +18,7 @@ class Codechef
 		    y = sc.nextInt();
 		}
 		
-		System.out.println(serve(x,y));
+		System.out.println(Math.abs(x-y));
     
 	}
 }
