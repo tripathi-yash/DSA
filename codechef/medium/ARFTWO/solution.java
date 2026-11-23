@@ -4,8 +4,8 @@ import java.io.*;
 
 class Codechef
 {
-    public static int serve(int x, int y){
-        return x * y;
+    public static int sum(int x, int y){
+        return x + y;
     }
 	public static void main (String[] args) throws java.lang.Exception
 	{
@@ -24,7 +24,7 @@ class Codechef
 		    total = sc.nextInt();
 		}
 		
-		System.out.println((Math.sum(Math.max(x,y), Math.max(y,z)) >= total) ? "YES" : "NO");
+		System.out.println((sum(Math.max(x,y), Math.max(y,z)) >= total) ? "YES" : "NO");
     
 	}
 }
