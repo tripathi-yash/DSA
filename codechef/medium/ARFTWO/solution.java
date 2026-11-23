@@ -24,7 +24,24 @@ class Codechef
 		    total = sc.nextInt();
 		}
 		
-		System.out.println((sum(Math.max(x,y), Math.max(y,z)) >= total) ? "YES" : "NO");
+		int first = Integer.MIN_VALUE, sec = Integer.MIN_VALUE;
+		
+		if(x > z && x > y){
+		    first = x;
+		    if(y > z && y < x) sec = y;
+		    else sec = z;
+		}
+		else if(y > x && y > z){
+		    first = y;
+		    if(x > z && x < y) sec = x;
+		    else sec = z;
+		}
+		else {
+		    first = z;
+		    if(x < z && z > y) sec = z;
+		    else sec = y;
+		}
+		System.out.println((sum(first, sec) >= total) ? "YES" : "NO");
     
 	}
 }
