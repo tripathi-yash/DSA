@@ -54,7 +54,7 @@ NO
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-23T14:09:10.742Z  
+**Submitted:** 2026-11-23T14:07:40.175Z  
 
 ```java
 import java.util.*;
@@ -85,19 +85,19 @@ class Codechef
 		
 		int first = Integer.MIN_VALUE, sec = Integer.MIN_VALUE;
 		
-		if(x >= z && x >= y){
+		if(x > z && x > y){
 		    first = x;
-		    if(y >= z && y <= x) sec = y;
+		    if(y > z && y < x) sec = y;
 		    else sec = z;
 		}
-		else if(y >= x && y >= z){
+		else if(y > x && y > z){
 		    first = y;
-		    if(x >= z && x <= y) sec = x;
+		    if(x > z && x < y) sec = x;
 		    else sec = z;
 		}
 		else {
 		    first = z;
-		    if(x <= z && x >= y) sec = x;
+		    if(x < z && x > y) sec = x;
 		    else sec = y;
 		}
 		System.out.println((sum(first, sec) >= total) ? "YES" : "NO");
