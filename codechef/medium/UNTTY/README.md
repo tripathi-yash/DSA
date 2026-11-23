@@ -79,7 +79,7 @@ The first `#` does nothing because the text is empty. Typing `a` gives `a`, and 
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-23T14:22:18.794Z  
+**Submitted:** 2026-11-23T14:34:46.135Z  
 
 ```java
 import java.util.*;
@@ -96,15 +96,21 @@ class Codechef
 		// your code goes here
 		Scanner sc = new Scanner(System.in);
 		
-		int x = 0;
-		int y = 0;
+		String str = new String();
+		str = sc.next();
 		
-		if(sc.hasNextInt()){
-		    x = sc.nextInt();
-		    y = sc.nextInt();
+		StringBuilder curr = new StringBuilder();
+		
+		for(int i=0; i<str.length(); i++){
+		    
+		    char c = str.charAt(i);
+		    if(c == '#' && (curr.length()) != 0){
+		        curr.deleteCharAt(curr.length()-1);
+		    }else
+		    curr.append(c);
 		}
 		
-		System.out.println(serve(x,y));
+		System.out.println((curr.length() > 0 ) ? curr.toString() : "");
     
 	}
 }
