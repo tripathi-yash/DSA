@@ -54,7 +54,7 @@ NO
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-23T14:10:20.881Z  
+**Submitted:** 2026-11-23T14:09:10.742Z  
 
 ```java
 import java.util.*;
@@ -70,9 +70,7 @@ class Codechef
 	{
 		// your code goes here
 		Scanner sc = new Scanner(System.in);
-		int t = 0;
-		while(t-- > 0){
-		    
+		
 		int x = 0;
 		int y = 0;
 		int z = 0;
@@ -104,7 +102,6 @@ class Codechef
 		}
 		System.out.println((sum(first, sec) >= total) ? "YES" : "NO");
     
-		}
 	}
 }
 
