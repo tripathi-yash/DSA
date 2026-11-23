@@ -54,7 +54,7 @@ NO
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-23T13:53:24.340Z  
+**Submitted:** 2026-11-23T13:54:04.613Z  
 
 ```java
 import java.util.*;
@@ -63,8 +63,8 @@ import java.io.*;
 
 class Codechef
 {
-    public static int serve(int x, int y){
-        return x * y;
+    public static int sum(int x, int y){
+        return x + y;
     }
 	public static void main (String[] args) throws java.lang.Exception
 	{
@@ -83,7 +83,7 @@ class Codechef
 		    total = sc.nextInt();
 		}
 		
-		System.out.println((Math.sum(Math.max(x,y), Math.max(y,z)) >= total) ? "YES" : "NO");
+		System.out.println((sum(Math.max(x,y), Math.max(y,z)) >= total) ? "YES" : "NO");
     
 	}
 }
