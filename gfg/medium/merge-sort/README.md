@@ -26,7 +26,7 @@ Explanation: We get the sorted array after using merge sort
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-05T17:21:37.180Z  
+**Submitted:** 2026-11-25T23:44:41.643Z  
 
 ```java
 class Solution {
