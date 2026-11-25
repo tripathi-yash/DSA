@@ -6,7 +6,7 @@ class Solution {
         int i=l , j = mid+1, k=0;
     
         while(i <= mid && j <= r){
-            if(arr[i] < arr[j]){
+            if(arr[i] <= arr[j]){
                 auxArr[k] = arr[i++];
             }
             else auxArr[k] = arr[j++];
