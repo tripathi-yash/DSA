@@ -26,7 +26,7 @@ Explanation: We get the sorted array after using merge sort
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-11-25T23:44:41.643Z  
+**Submitted:** 2026-11-25T23:49:10.450Z  
 
 ```java
 class Solution {
@@ -37,7 +37,7 @@ class Solution {
         int i=l , j = mid+1, k=0;
     
         while(i <= mid && j <= r){
-            if(arr[i] < arr[j]){
+            if(arr[i] <= arr[j]){
                 auxArr[k] = arr[i++];
             }
             else auxArr[k] = arr[j++];
