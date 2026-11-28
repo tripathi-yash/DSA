@@ -52,8 +52,8 @@ rotate 2 steps to the right: [3,99,-1,-100]
 
 **Language:** Java  
 **Runtime:** 5 ms (beats 78.70%)  
-**Memory:** 268.4 MB (beats 51.34%)  
-**Submitted:** 2026-11-28T03:52:21.690Z  
+**Memory:** 268.2 MB (beats 66.74%)  
+**Submitted:** 2026-11-28T03:57:06.672Z  
 
 ```java
 class Solution {
@@ -74,7 +74,7 @@ class Solution {
         int n = nums.length;
         k = k % n;
        
-        if (k != n && k > 0){
+        if (k > 0){
             reverse(nums, 0, n-1);
 
             if (k > 0) reverse(nums,0,k-1);
