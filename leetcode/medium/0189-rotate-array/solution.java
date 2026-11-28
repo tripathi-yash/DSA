@@ -16,7 +16,7 @@ class Solution {
         int n = nums.length;
         k = k % n;
        
-        if (k != n && k > 0){
+        if (k > 0){
             reverse(nums, 0, n-1);
 
             if (k > 0) reverse(nums,0,k-1);
